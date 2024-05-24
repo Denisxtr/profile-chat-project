@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
   birthYear: Date,
   email: { type: String, unique: true },
   password: String,
-  profilePicture: { type: String, default: 'default.jpg' }
 });
 
 userSchema.pre('save', async function (next) {

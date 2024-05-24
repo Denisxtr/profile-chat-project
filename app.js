@@ -28,10 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: { secure: false }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static('uploads')); // Serve the uploads directory
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

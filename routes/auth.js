@@ -22,6 +22,11 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/login');
+});
+
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -39,16 +44,42 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/profile', async (req, res) => {
-  if (!req.session.userId) return res.status(401).send('Unauthorized');
+  if (!req.session.userId) {
+    return res.status(401).send('Unauthorized');
+  }
 
-  const { name, surname, birthYear } = req.body;
-  await User.findByIdAndUpdate(req.session.userId, { name, surname, birthYear });
-  res.redirect('/profile');
+  const { name, surname, bio, birthYear } = req.body;
+
+  try {
+    await User.findByIdAndUpdate(req.session.userId, {
+      name,
+      surname,
+      bio,
+      birthYear
+    });
+
+    res.redirect('/profile'); // Redirect back to profile page after update
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
+
 
 router.get('/profile', (req, res) => {
   if (!req.session.userId) return res.status(401).send('Unauthorized');
   res.sendFile(path.join(__dirname, '../views/profile.html'));  // Serve profile.html file
+});
+
+router.get('/api/profile', async (req, res) => {
+  if (!req.session.userId) return res.status(401).send('Unauthorized');
+
+  try {
+    const user = await User.findById(req.session.userId).select('name surname bio birthYear');
+    res.json(user);
+  } catch (error) {
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 router.get('/logout', (req, res) => {
