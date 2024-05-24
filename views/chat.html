@@ -1,0 +1,25 @@
+<!-- chat.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <h1>Chat</h1>
+    <div>
+        <input type="text" id="searchInput" placeholder="Search users">
+        <ul id="userList"></ul>
+    </div>
+    <div id="chatBox" style="width: 100%; height: 300px; border: 1px solid #ccc; overflow-y: scroll;"></div>
+    <div id="typingIndicator" style="color: gray;"></div>
+    <input type="text" id="chatInput" placeholder="Type a message">
+    <button id="sendButton">Send</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+    
+</body>
+</html>

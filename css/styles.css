@@ -1,0 +1,116 @@
+#chatBox {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+  }
+  
+  #chatInput {
+    width: calc(100% - 100px);
+  }
+  
+  #sendButton {
+    width: 80px;
+  }
+  .status-indicator {
+    margin-left: 10px;
+  }
+ .unread-notification {
+  color: red;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.chat-container {
+  display: flex;
+  width: 80%;
+  max-width: 1200px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-list, .group-list {
+  flex: 1;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+}
+
+.group-list {
+  border-left: 1px solid #ddd;
+}
+
+.user-list h3, .group-list h3 {
+  margin: 0 0 10px 0;
+}
+
+.user-list input, .group-list button {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.user-list ul, .group-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-list ul li, .group-list ul li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.user-list ul li:hover, .group-list ul li:hover {
+  background-color: #eee;
+}
+
+.chat-box-container {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  overflow-y: scroll;
+}
+
+.message-input {
+  display: flex;
+  padding: 10px;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-right: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+.message-input button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #28a745;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.message-input button:hover {
+  background-color: #218838;
+}
